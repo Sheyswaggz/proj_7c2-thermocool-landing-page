@@ -1,0 +1,31 @@
+I cannot generate code for a JPG image file. Image files are binary assets that cannot be created through code generation - they must be created using image editing software or obtained from photography/design sources.
+
+For the placeholder image `images/company-team.jpg` specified in your requirements, you have several options:
+
+1. **Use a placeholder service** (temporary):
+   - https://via.placeholder.com/1200x800/0066cc/ffffff?text=ThermoCool+Team
+   - https://placehold.co/1200x800/0066cc/ffffff/png?text=ThermoCool+Team
+
+2. **Use free stock photos** from:
+   - Unsplash (https://unsplash.com)
+   - Pexels (https://pexels.com)
+   - Pixabay (https://pixabay.com)
+   
+   Search terms: "HVAC team", "technicians", "professional team", "facility"
+
+3. **Create a professional image** with:
+   - Canva (free templates available)
+   - Adobe Express
+   - GIMP (free, open-source)
+
+4. **Commission custom photography** of actual ThermoCool team/facility
+
+**Recommended specifications for the image:**
+- Dimensions: 1200x800px (3:2 aspect ratio)
+- Format: JPG
+- Quality: 80-85% (balance between quality and file size)
+- File size: < 200KB (optimized for web)
+- Content: Professional team photo or facility image
+- Color scheme: Align with brand colors (#0066cc primary blue)
+
+Since this is a binary asset, it must be obtained or created outside of code generation and then placed in the `images/` directory.
