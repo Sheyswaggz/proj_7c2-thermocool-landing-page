@@ -1,0 +1,1 @@
+cwebp -q 85 -resize 1920 1080 input-image.jpg -o hero-background-optimized.webp
