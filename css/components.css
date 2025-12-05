@@ -1,130 +1,296 @@
 /* ============================================
-   Service Card Component Styles
+   Form Component Styles
    ============================================ */
 
-.service-card {
-  background: white;
-  padding: 2rem;
+/* Form input base styles */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  display: flex;
-  flex-direction: column;
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.service-card:hover {
+/* Focus states for form inputs */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Hover states for form inputs */
+.form-input:hover:not(:focus),
+.form-select:hover:not(:focus),
+.form-textarea:hover:not(:focus) {
+  border-color: var(--color-primary);
+}
+
+/* Textarea specific styles */
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Error state for form inputs */
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  border-color: var(--color-error);
+}
+
+.form-input.error:focus,
+.form-select.error:focus,
+.form-textarea.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* Success state for form inputs */
+.form-input.success,
+.form-select.success,
+.form-textarea.success {
+  border-color: var(--color-success);
+}
+
+.form-input.success:focus,
+.form-select.success:focus,
+.form-textarea.success:focus {
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* Validation indicator icons */
+.form-input.error,
+.form-select.error,
+.form-textarea.error {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23dc3545' viewBox='0 0 16 16'%3E%3Cpath d='M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z'/%3E%3Cpath d='M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+.form-input.success,
+.form-select.success {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2328a745' viewBox='0 0 16 16'%3E%3Cpath d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* Error message styles */
+.error-message {
+  display: none;
+  color: var(--color-error);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.error-message::before {
+  content: '⚠ ';
+  font-weight: bold;
+}
+
+/* Button component styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-base);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Secondary button */
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #e55a00;
+}
+
+/* Disabled button state */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading button state */
+.btn.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 50%;
+  left: 50%;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: button-loading-spinner 0.6s linear infinite;
+}
+
+@keyframes button-loading-spinner {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Card component styles */
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
-.service-card h3 {
-  color: var(--color-primary);
+.card-header {
   margin-bottom: 1rem;
-  font-size: 1.5rem;
-  font-family: var(--font-family-heading);
-  line-height: 1.3;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border);
 }
 
-.service-card p {
-  color: var(--color-text-light);
-  line-height: 1.7;
-  flex-grow: 1;
-}
-
-/* ============================================
-   Information Section Styling
-   ============================================ */
-
-.about-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.about-content h2 {
-  font-family: var(--font-family-heading);
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--color-primary);
-  margin-bottom: 2rem;
+  margin: 0;
 }
 
-.about-content p {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--color-text);
-  text-align: left;
-}
-
-.about-content p:last-child {
-  margin-bottom: 0;
-}
-
-/* ============================================
-   Consistent Spacing and Typography
-   ============================================ */
-
-#services {
-  padding: 3rem 0;
-}
-
-#about {
-  padding: 3rem 0;
-}
-
-#services h2,
-#about h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-/* ============================================
-   Accessible Color Contrasts
-   ============================================ */
-
-.service-card h3 {
-  /* Primary color already meets WCAG AA standards */
-  color: var(--color-primary);
-}
-
-.service-card p {
-  /* Text light color provides sufficient contrast on white background */
-  color: var(--color-text-light);
-}
-
-.about-content p {
-  /* Main text color ensures optimal readability */
+.card-body {
   color: var(--color-text);
 }
 
-/* ============================================
-   Responsive Design
-   ============================================ */
+.card-footer {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
 
+/* Badge component */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--color-background-alt);
+  color: var(--color-text);
+}
+
+.badge-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.badge-success {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--color-error);
+  color: white;
+}
+
+/* Alert component */
+.alert {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  border-left: 4px solid;
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-color: var(--color-success);
+  color: #155724;
+}
+
+.alert-error {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: var(--color-error);
+  color: #721c24;
+}
+
+.alert-info {
+  background-color: rgba(0, 102, 204, 0.1);
+  border-color: var(--color-primary);
+  color: #004085;
+}
+
+/* Responsive adjustments for components */
 @media (max-width: 768px) {
-  .service-card {
-    padding: 1.5rem;
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px;
   }
-
-  .service-card h3 {
-    font-size: 1.25rem;
+  
+  .btn {
+    width: 100%;
   }
-
-  .about-content p {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-}
-
-@media (max-width: 480px) {
-  .service-card {
-    padding: 1.25rem;
-  }
-
-  .service-card h3 {
-    font-size: 1.125rem;
-  }
-
-  .about-content p {
-    font-size: 0.95rem;
+  
+  .card {
+    padding: 1rem;
   }
 }
