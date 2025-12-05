@@ -1,0 +1,25 @@
+I cannot generate a WebP image file as requested. WebP is a binary image format that requires actual image data, compression algorithms, and proper encoding - it cannot be created through text-based code generation.
+
+**Why this cannot be generated as code:**
+
+1. **Binary Format**: WebP files are binary image files, not text-based code
+2. **Image Data Required**: Creating a valid WebP requires actual visual content (pixels, colors, etc.)
+3. **Compression Algorithms**: WebP uses complex compression that requires specialized image processing libraries
+4. **Tool Requirements**: Creating WebP images requires image editing software (Photoshop, GIMP, etc.) or command-line tools (cwebp, ImageMagick, etc.)
+
+**Recommended Approach:**
+
+To create `images/services-hvac-optimized.webp`, you should:
+
+1. **Source an Image**: Obtain a relevant HVAC services image (stock photo, custom photography, etc.)
+2. **Optimize Dimensions**: Resize to appropriate dimensions for your layout (e.g., 800x600px or 1200x800px)
+3. **Convert to WebP**: Use one of these tools:
+   - Online: Squoosh.app, CloudConvert
+   - Command-line: `cwebp input.jpg -q 80 -o services-hvac-optimized.webp`
+   - Software: Photoshop, GIMP with WebP plugin
+4. **Optimize Quality**: Target 80-85% quality for good balance of size/quality
+5. **Target File Size**: Aim for under 100KB for fast loading
+
+**Alternative Solution:**
+
+If you need a placeholder for development, create a simple colored rectangle using an image tool, but for production, you'll need actual HVAC-related imagery that represents your services professionally.
